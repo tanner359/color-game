@@ -33,7 +33,19 @@ public class Projectile_Trigger : Color_Game
 
         newGradient.mode = GradientMode.Fixed;
 
-        GradientColorKey key0 = new GradientColorKey(Random.ColorHSV(0f, 1f, 0f, 1f, 0f, 1f), 1.0f);
+        int r = Random.Range(1, 10);
+        int g = Random.Range(1, 10);
+        while (Mathf.Abs(r - g) < 1f)
+        {
+            g = Random.Range(1, 10);
+        }
+        int b = Random.Range(1, 10);
+        while (Mathf.Abs(b - g) < 1f)
+        {
+            b = Random.Range(1, 10);
+        }
+
+        GradientColorKey key0 = new GradientColorKey(new Color(r/10,g/10,b/10,1.0f), 1.0f);
         GradientColorKey key1 = new GradientColorKey(Get_Complementary(c), 0.5f);
         GradientColorKey[] c_keys = { key0, key1 };
 

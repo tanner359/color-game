@@ -68,12 +68,12 @@ public class Player : Player_Controller
         {
             int r = Random.Range(1, 10);
             int g = Random.Range(1, 10);
-            while (Mathf.Abs(r - g) < 1.5f)
+            while (Mathf.Abs(r - g) < 1f)
             {
                 g = Random.Range(1, 10);
             }
             int b = Random.Range(1, 10);
-            while (Mathf.Abs(b - g) < 1.5f)
+            while (Mathf.Abs(b - g) < 1f)
             {
                 b = Random.Range(1, 10);
             }
