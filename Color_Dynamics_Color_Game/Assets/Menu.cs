@@ -21,13 +21,17 @@ public class Menu : MonoBehaviour
 
     private void Continue(InputAction.CallbackContext obj)
     {
+        if (Color_Game.unlocked[1])
+        {
+            Launcher.Load_Scene(3);
+            return;
+        }
         Launcher.Reload_Scene();
-        //FX.SetTrigger("Close");
     }
 
     public void Disable_Menu()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);  
     }
 
     private void OnDisable()

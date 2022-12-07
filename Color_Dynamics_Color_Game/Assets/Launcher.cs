@@ -10,8 +10,8 @@ public static class Launcher
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public static void Load_Scene()
+    public static void Load_Scene(int i)
     {
-
+        SceneManager.LoadScene(i);
     }
 }

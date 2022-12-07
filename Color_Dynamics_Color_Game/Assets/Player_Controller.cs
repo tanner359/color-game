@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller : Color_Game
 {
     Inputs inputs;
-    Vector2 moveDir;
-    Rigidbody2D rb;
+    public Vector2 moveDir;
+    public Rigidbody2D rb;
+    public Animator animator;
 
     //Movement Settings
     public float moveSpeed = 1.0f;
@@ -19,21 +20,30 @@ public class Player_Controller : MonoBehaviour
             inputs = new Inputs();
         }
     }
-    private void Start()
+
+    private void Lock_Controller()
     {
-        rb = GetComponent<Rigidbody2D>();
+        Debug.Log("locked");
+        inputs.Player.Move.Disable();
+        animator.applyRootMotion = false;
+    }
+
+    private void Unlock_Controller()
+    {
+        Debug.Log("unlocked");
+        inputs.Player.Move.Enable();
+        animator.applyRootMotion = true;
     }
 
     private void OnEnable()
     {
         inputs.Player.Move.performed += Move;
         inputs.Player.Move.canceled += Move;
-        inputs.Player.Enable();
     }
 
     private void FixedUpdate()
     {
-        if(moveDir != Vector2.zero)
+        if (moveDir != Vector2.zero)
         {
             Vector2 d = (Vector2)transform.position + (moveSpeed * moveDir) * Time.deltaTime;
             rb.MovePosition(d);
@@ -42,6 +52,6 @@ public class Player_Controller : MonoBehaviour
 
     private void Move(InputAction.CallbackContext obj)
     {
-        moveDir = obj.ReadValue<Vector2>();
+        moveDir = obj.ReadValue<Vector2>();  
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Color_Game : MonoBehaviour
 {
+    public static bool[] unlocked = {true,false,false};
     public enum Game_Mode { Complementary, Overlaping, After_Image}
     public Game_Mode Game = Game_Mode.Complementary;
 
@@ -23,14 +24,35 @@ public class Color_Game : MonoBehaviour
     {
         return Color.white - a + Color.black;
     }
-    public void Next_Game()
+
+    public Color Get_Overlap(Color x, Color y, bool reverse)
     {
-        if(Game != Game_Mode.After_Image)
-        {
-            Game += 1;
-            return;
+        float r, g, b, a;
+        if (!reverse){
+            r = (x.r + y.r) / 2f;
+            g = (x.g + y.g) / 2f;
+            b = (x.b + y.b) / 2f;
+            a = 1.0f;
+            print("Forward: " + new Color(r, g, b, a));
+            return new Color(r, g, b, a);
         }
-        Debug.Log("The End - Thanks For Playing!");
+
+        r = ((y.r - x.r) * 2f) + x.r;
+        g = ((y.g - x.g) * 2f) + x.g;
+        b = ((y.b - x.b) * 2f) + x.b;
+        a = 1.0f;
+        print("Back: " + new Color(r, g, b, a));
+        return new Color(r, g, b, a);
+    }
+
+    public void Change_Game_Mode(Game_Mode mode)
+    {
+        Game = mode;
+    }
+
+    public void Load_Level(int i)
+    {
+        Launcher.Load_Scene(i);
     }
 }
 

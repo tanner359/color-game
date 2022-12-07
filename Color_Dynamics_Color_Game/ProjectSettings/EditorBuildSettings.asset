@@ -9,6 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_00_MAIN_MENU.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/Level_00_LEVEL_SELECT.unity
+    guid: 8d45b4654d752414699f43e24b5fd47b
+  - enabled: 1
     path: Assets/Scenes/Level_01_COMPLEMENTARY.unity
-    guid: ce16d452503cea945a810f03bba527cb
+    guid: a99ada005fd27bf4ebc8fd385e9d49cd
+  - enabled: 1
+    path: Assets/Scenes/Level_02_OVERLAP.unity
+    guid: 856920bf7ec2c0e4fa6007ea5b94aefc
+  - enabled: 1
+    path: Assets/Scenes/Level_03_AFTER_IMAGE.unity
+    guid: 13675f26395e4b84c8371b3e7ec68e09
   m_configObjects: {}
