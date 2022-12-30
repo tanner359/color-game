@@ -6,7 +6,7 @@ public class Overlap_Door : Door
 {
     public bool reverse;
     public Transform connectedDoor;
-    private SpriteRenderer sr;
+    internal SpriteRenderer sr;
     public Transform teleport;
 
     new private void Awake()
@@ -18,10 +18,9 @@ public class Overlap_Door : Door
 
     private void Start()
     {
-        sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
-
         if (!reverse)
         {
+            sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
             int r = Random.Range(1, 10);
             int g = Random.Range(1, 10);
             while(Mathf.Abs(r-g) < 1.5f){
@@ -32,7 +31,9 @@ public class Overlap_Door : Door
                 b = Random.Range(1, 10);
             }
             sr.color = new Color(r / 10f, g / 10f, b / 10f, 1.0f);
+            return;
         }
+        sr = connectedDoor.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     public void Teleport(GameObject actor)

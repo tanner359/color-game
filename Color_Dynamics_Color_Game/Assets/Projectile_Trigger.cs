@@ -45,7 +45,7 @@ public class Projectile_Trigger : Color_Game
             b = Random.Range(1, 10);
         }
 
-        GradientColorKey key0 = new GradientColorKey(new Color(r/10,g/10,b/10,1.0f), 1.0f);
+        GradientColorKey key0 = new GradientColorKey(new Color(r/10f,g/10f,b/10f,1.0f), 1.0f);
         GradientColorKey key1 = new GradientColorKey(Get_Complementary(c), 0.5f);
         GradientColorKey[] c_keys = { key0, key1 };
 

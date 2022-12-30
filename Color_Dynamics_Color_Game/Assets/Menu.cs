@@ -7,35 +7,19 @@ public class Menu : MonoBehaviour
 {
     public string menuID;
     public Animator FX;
-    Inputs input;
 
-    private void OnEnable()
+    public void Reload()
     {
-        if(input == null)
-        {
-            input = new Inputs();
-        }
-        input.Player.Continue.performed += Continue;
-        input.Player.Continue.Enable();
+        Launcher.Reload_Scene();
     }
 
-    private void Continue(InputAction.CallbackContext obj)
+    public void Load_Level(int i)
     {
-        if (Color_Game.unlocked[1])
-        {
-            Launcher.Load_Scene(3);
-            return;
-        }
-        Launcher.Reload_Scene();
+        Launcher.Load_Scene(i);
     }
 
     public void Disable_Menu()
     {
         gameObject.SetActive(false);  
-    }
-
-    private void OnDisable()
-    {
-        input.Player.Continue.Disable();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Player_Controller
 {
-    public Player_UI UI;
+    public Chapter_01_UI CH1_UI;
 
     public Color m_player_color;
     public Color Player_Color { get { return m_player_color; } set { m_player_color = value; GetComponent<SpriteRenderer>().color = value; } }
@@ -12,16 +12,15 @@ public class Player : Player_Controller
     public int points;
     public int Points { get { return points; } set {
             points = value;
-            UI.points.text = "Points: " + value.ToString(); UI.final_score.text = points.ToString();
-            if(Game == Game_Mode.Complementary && value == 200) { unlocked[1] = true; }
+            CH1_UI.points.text = "Points: " + value.ToString(); CH1_UI.final_score.text = points.ToString();
         } 
     }
 
     public int life_points;
-    public int Life { get { return life_points; } set { life_points = value; UI.life_points.text = "Lives: " + value.ToString(); } }
+    public int Life { get { return life_points; } set { life_points = value; CH1_UI.life_points.text = "Lives: " + value.ToString(); } }
 
     public int m_longest_streak;
-    public int Longest_Streak { get { return m_longest_streak;  } set { m_longest_streak = value; UI.longest_streak.text = value.ToString(); } }
+    public int Longest_Streak { get { return m_longest_streak;  } set { m_longest_streak = value; CH1_UI.longest_streak.text = value.ToString(); } }
 
     public int m_current_streak;
     public int Current_Streak { get { return m_current_streak; } set { m_current_streak = value; if(value > Longest_Streak) { Longest_Streak = value; } } }
@@ -58,7 +57,13 @@ public class Player : Player_Controller
         {
             Destroy(gameObject);
             Instantiate(death_particle, transform.position, Quaternion.identity);
-            UI.Open_Menu("Chapter_01_Complete");
+            if (Points > 300)
+            {
+                unlocked[1] = true;
+                CH1_UI.Open_Menu("Level_Complete");
+                return;
+            }
+            CH1_UI.Open_Menu("Level_Retry");
         }     
     }
 

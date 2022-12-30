@@ -5,7 +5,6 @@ using TMPro;
 
 public class Player_UI : MonoBehaviour
 {
-    public TMP_Text life_points, points, longest_streak, final_score;
     public List<Menu> menus;
 
     public void Open_Menu(string id)

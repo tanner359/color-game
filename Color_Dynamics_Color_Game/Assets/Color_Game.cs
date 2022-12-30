@@ -25,7 +25,7 @@ public class Color_Game : MonoBehaviour
         return Color.white - a + Color.black;
     }
 
-    public Color Get_Overlap(Color x, Color y, bool reverse)
+    public static Color Get_Overlap(Color x, Color y, bool reverse)
     {
         float r, g, b, a;
         if (!reverse){
